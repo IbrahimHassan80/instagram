@@ -13,21 +13,34 @@
 
 Route::namespace('posts')->group(function(){
 
-//-- follow button -- //
+ // group multi language //
+ Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){ 
+		
+		Route::get('/', 'postscontroller@index');
+
+        Route::get('/p/create', 'postscontroller@create');
+        
+        Route::get('/p/{post}', 'postscontroller@show');
+
+        Route::get('p/editcaption/{id}', 'postscontroller@editcapth');
+
+    	Route::post('/p', 'postscontroller@store')->name('storeimg');    
+
+      Route::delete('p/{id}/delete', 'postscontroller@delete')->name('deletepost');
+});
+   // end group // 
+
+// -----------------------------//
+
+   //-- follow button -- //
 Route::post('follow/{user}', 'postscontroller@read');
 // --  -- --  --  -- // 
 
-Route::get('/', 'postscontroller@index');
 
-route::get('/p/create', 'postscontroller@create');
-
-Route::post('/p', 'postscontroller@store');
-
-Route::delete('p/{id}/delete', 'postscontroller@delete');
-
-Route::get('/p/{post}', 'postscontroller@show');
-
-Route::get('p/editcaption/{id}', 'postscontroller@editcapth');
 
 Route::Post('saveedit/{id}', 'postscontroller@saveedit');
 });

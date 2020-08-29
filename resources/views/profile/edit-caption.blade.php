@@ -45,7 +45,7 @@
     		   	 @if($errors->has('caption'))
                     {{$errors->get('caption')[0]}}
                  @endif
-    		   	<button>Edit</button>
+    		   	<button>{{__('messages.edit')}}</button>
     	  </form>
     	</span>
     

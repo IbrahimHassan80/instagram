@@ -63,7 +63,7 @@ class postscontroller extends Controller
 
 }
  // show the one post //
-public function show(\App\post $post){
+public function show(post $post){
 
  return view('posts.showpost', compact('post'));
 	 

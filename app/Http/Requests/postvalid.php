@@ -31,7 +31,7 @@ class postvalid extends FormRequest
     public function messages()
     {
         return [
-            'image.required' => 'you must choose image to load in UR profile'
+            'image.required' => __('messages.image require'),
         
         ];
     }

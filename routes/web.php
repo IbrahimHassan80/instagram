@@ -16,9 +16,18 @@ Auth::routes();
 
 Route::group(['namespace' => 'profile'], function(){
 
-Route::get('/profile/{user}', 'profilecontroller@index')->name('home');
+// group multi language //
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){ 
 
-Route::get('profile/{user}/edit', 'profilecontroller@edit')->name('profile.edit');
+		Route::get('/profile/{user}', 'profilecontroller@index')->name('home');
+
+        Route::get('profile/{user}/edit', 'profilecontroller@edit')->name('profile.edit');
+});  
+// end group //
 
 Route::patch('/profile/{user}', 'profilecontroller@update');
 

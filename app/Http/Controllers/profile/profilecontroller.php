@@ -25,7 +25,7 @@ class profilecontroller extends Controller
        return view('profile.profile-edit', compact('user'));
     }
 
-    public function update(\App\User $user){
+    public function update(User $user){
     	
       $this->authorize('update', $user->profile); // policy //
       

@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use App\model\User;
 class Post extends Model
 {
     protected $table = 'posts';

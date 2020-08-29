@@ -38,10 +38,10 @@
   
   <!-- Delete button -->
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="editcaption/{{ $post->id }}">Edit</a>
-    <form action="{{$post->id}}/delete" method="post">
+    <a class="dropdown-item" href="editcaption/{{ $post->id }}">{{__('messages.edit')}}</a>
+    <form action="{{route('deletepost',$post->id)}}" method="post">
       @method('delete') @csrf
-        <button class="dropdown-item">Delete</button>
+        <button class="dropdown-item">{{__('messages.delete')}}</button>
     </form>
   
   </div>
